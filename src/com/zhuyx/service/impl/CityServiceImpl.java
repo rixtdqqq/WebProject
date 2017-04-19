@@ -10,7 +10,7 @@ package com.zhuyx.service.impl;
 
 import com.zhuyx.model.City;
 import com.zhuyx.model.ResponseBody;
-import com.zhuyx.page.Pager;
+import com.zhuyx.model.Pager;
 import com.zhuyx.service.CityService;
 
 /**

@@ -9,12 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.zhuyx.model.ResponseMessage;
 import com.zhuyx.model.ResponseBody;
+import com.zhuyx.model.ResponseMessage;
 import com.zhuyx.model.User;
 import com.zhuyx.service.LoginService;
 import com.zhuyx.service.impl.LoginServiceImpl;
-import com.zhuyx.util.SendEmailUtil;
 
 /**
  * Servlet implementation class LoginServlet

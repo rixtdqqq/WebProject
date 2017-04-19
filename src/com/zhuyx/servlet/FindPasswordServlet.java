@@ -1,6 +1,7 @@
 package com.zhuyx.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,13 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.zhuyx.model.ResponseMessage;
 import com.zhuyx.model.ResponseBody;
+import com.zhuyx.model.ResponseMessage;
 import com.zhuyx.model.User;
-import com.zhuyx.service.CheckAccountAndEmailService;
 import com.zhuyx.service.FindPasswordService;
-import com.zhuyx.service.FindPasswordServiceImpl;
-import com.zhuyx.service.impl.CheckAccountAndEmailServiceImpl;
+import com.zhuyx.service.impl.FindPasswordServiceImpl;
 import com.zhuyx.util.SendEmailUtil;
 
 /**

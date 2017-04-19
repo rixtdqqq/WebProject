@@ -6,13 +6,14 @@
  * QQ : 2951589923
  * 
  */
-package com.zhuyx.service;
+package com.zhuyx.service.impl;
 
 import com.zhuyx.dao.FindPasswordDao;
 import com.zhuyx.dao.impl.FindPasswordDaoImpl;
 import com.zhuyx.model.ResponseBody;
 import com.zhuyx.model.ResponseMessage;
 import com.zhuyx.model.User;
+import com.zhuyx.service.FindPasswordService;
 
 /**
  * @author Administrator

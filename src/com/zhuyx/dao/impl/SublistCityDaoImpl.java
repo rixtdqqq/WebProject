@@ -16,7 +16,7 @@ import java.util.Map;
 import com.zhuyx.dao.CityDao;
 import com.zhuyx.model.City;
 import com.zhuyx.model.ResponseBody;
-import com.zhuyx.page.Pager;
+import com.zhuyx.model.Pager;
 import com.zhuyx.util.JdbcUtil;
 
 /**

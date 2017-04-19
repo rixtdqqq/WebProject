@@ -6,7 +6,7 @@
  * QQ : 2951589923
  * 
  */
-package com.zhuyx.page;
+package com.zhuyx.model;
 
 import java.io.Serializable;
 import java.util.List;

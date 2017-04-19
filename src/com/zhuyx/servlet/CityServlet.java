@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.zhuyx.model.City;
 import com.zhuyx.model.ResponseBody;
-import com.zhuyx.page.Pager;
+import com.zhuyx.model.Pager;
 import com.zhuyx.service.CityService;
 import com.zhuyx.service.impl.SublistCityServiceImpl;
 

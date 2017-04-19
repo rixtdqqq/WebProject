@@ -12,7 +12,7 @@ import com.zhuyx.dao.CityDao;
 import com.zhuyx.dao.impl.SublistCityDaoImpl;
 import com.zhuyx.model.City;
 import com.zhuyx.model.ResponseBody;
-import com.zhuyx.page.Pager;
+import com.zhuyx.model.Pager;
 import com.zhuyx.service.CityService;
 
 /**
