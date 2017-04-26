@@ -15,6 +15,7 @@ import com.zhuyx.model.User;
 import com.zhuyx.service.FindPasswordService;
 import com.zhuyx.service.impl.FindPasswordServiceImpl;
 import com.zhuyx.util.SendEmailUtil;
+import com.zhuyx.util.StringUtil;
 
 /**
  * Servlet implementation class FindPasswordServlet
@@ -43,6 +44,10 @@ public class FindPasswordServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getParameter("userName");
 		String email = request.getParameter("email");
+		if (StringUtil.isEmpty(userName) || StringUtil.isEmpty(email)) {
+			System.out.println("账号或邮箱为空！");
+			return;
+		}
 		// 生成6位数字
 		String checkCode = String.valueOf((int) ((Math.random() * 9 + 1) * 100000));
 		User user = new User.Builder()

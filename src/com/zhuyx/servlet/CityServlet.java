@@ -14,6 +14,7 @@ import com.zhuyx.model.ResponseBody;
 import com.zhuyx.model.Pager;
 import com.zhuyx.service.CityService;
 import com.zhuyx.service.impl.SublistCityServiceImpl;
+import com.zhuyx.util.StringUtil;
 
 /**
  * Servlet implementation class CityServlet
@@ -52,15 +53,15 @@ public class CityServlet extends HttpServlet {
 		// doGet(request, response);
 		// 接收request里面的参数
 		String name = request.getParameter("Name");
-		if (null == name || "".equals(name)) {
+		if (StringUtil.isEmpty(name)) {
 			name = "";
 		}
 		String countryCode = request.getParameter("CountryCode");
-		if (null == countryCode || "".equals(countryCode)) {
+		if (StringUtil.isEmpty(countryCode)) {
 			countryCode = "";
 		}
 		String district = request.getParameter("District");
-		if (null == district || "".equals(district)) {
+		if (StringUtil.isEmpty(district)) {
 			district = "";
 		}
 		String pageSizeStr = request.getParameter("pageSize");
@@ -79,7 +80,7 @@ public class CityServlet extends HttpServlet {
 		}
 
 		// 组装查询条件
-		City city = new City.Builder().countryCode(countryCode).district(district).name(name).build();
+		City city = new City.Builder().countryCode(countryCode.toUpperCase()).district(district).name(name).build();
 		// 调用service获取查询结果
 		ResponseBody<Pager<City>> result = cityService.findCity(city, pageNum, pageSize);
 		// 返回结果到页面

@@ -14,6 +14,7 @@ import com.zhuyx.model.ResponseMessage;
 import com.zhuyx.model.User;
 import com.zhuyx.service.LoginService;
 import com.zhuyx.service.impl.LoginServiceImpl;
+import com.zhuyx.util.StringUtil;
 
 /**
  * Servlet implementation class LoginServlet
@@ -43,6 +44,10 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
+		if (StringUtil.isEmpty(userName) || StringUtil.isEmpty(password)) {
+			System.out.println("账号或密码为空！");
+			return;
+		}
 		User user = new User.Builder()
 				.userName(userName)
 				.password(password)
