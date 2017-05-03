@@ -36,7 +36,7 @@ public class CheckAccountAndEmailDaoImpl implements CheckAccountAndEmailDao {
 		boolean hasCheckCode = !"".equals(checkCode);
 		String sql = "select * from User where 1=1 and userName=? and email=?";
 		if (hasCheckCode) {
-			sql = "select * from User where 1=1 and userName=? and email=? checkCode=?";
+			sql = "select * from User where 1=1 and userName=? and email=? and checkCode=?";
 		}
 		JdbcUserUtil util = null;
 		try {

@@ -23,47 +23,50 @@ import com.zhuyx.util.StringUtil;
 @WebServlet("/FindPasswordServlet")
 public class FindPasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public FindPasswordServlet() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public FindPasswordServlet() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String userName = request.getParameter("userName");
 		String email = request.getParameter("email");
+		String checkCode = request.getParameter("checkCode");
 		if (StringUtil.isEmpty(userName) || StringUtil.isEmpty(email)) {
 			System.out.println("账号或邮箱为空！");
 			return;
 		}
-		// 生成6位数字
-		String checkCode = String.valueOf((int) ((Math.random() * 9 + 1) * 100000));
-		User user = new User.Builder()
-				.checkCode(checkCode)
-				.userName(userName)
-				.email(email)
-				.build();
+		if (StringUtil.isEmpty(checkCode)) {
+			// 生成6位数字
+			checkCode = String.valueOf((int) ((Math.random() * 9 + 1) * 100000));
+			SendEmailUtil util = new SendEmailUtil();
+			util.doSendHtmlEmail("找回密码验证码", checkCode, email);
+		}
+		User user = new User.Builder().checkCode(checkCode).userName(userName).email(email).build();
 		FindPasswordService service = new FindPasswordServiceImpl();
 		ResponseBody<ResponseMessage> findPassword = service.findPassword(user);
-		SendEmailUtil util = new SendEmailUtil();
-		util.doSendHtmlEmail("找回密码验证码", checkCode, email);
 		Gson gson = new Gson();
 		request.setAttribute("result", gson.toJson(findPassword));
 		System.out.println(gson.toJson(findPassword));
 		request.getRequestDispatcher("demo.jsp").forward(request, response);
-		
+
 	}
 
 }
